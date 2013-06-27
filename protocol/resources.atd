@@ -1,0 +1,11 @@
+type exp_table =
+  int <ocaml repr="int64">
+  list <ocaml repr="array">
+
+
+type skill_info =
+  string list list
+
+
+type spell_paths =
+  string list list

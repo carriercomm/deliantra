@@ -1,0 +1,16 @@
+type string_list= string list
+type int_list	= int list
+
+type channel_info = {
+  tooltip	: string;
+  ?reply	: string option;
+  title		: string;
+  id		: string;
+}
+
+type tileset_reply = (int * string * int * int)
+
+type cmd = [
+  | AmbientMusic <json name="ambient_music"> of int_list
+  | ChannelInfo  <json name="channel_info">  of channel_info
+] <ocaml repr="classic">

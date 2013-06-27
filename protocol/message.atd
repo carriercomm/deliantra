@@ -1,0 +1,28 @@
+type server_version = {
+  serverver	: string;
+  server	: string;
+}
+
+type client_version = {
+  protver	: int;
+  client	: string;
+  clientver	: string;
+  osver		: string;
+}
+
+type setup = {
+  mapsize	: string;
+  tileset	: int;
+  excmd		: int;
+  mapinfocmd	: int;
+  extmap	: int;
+  map1cmd	: int;
+  fxix		: int;
+  extcmd	: int;
+  msg		: int;
+  frag		: int;
+  map1acmd	: int;
+  spellmon	: int;
+  itemcmd	: int;
+  lzf		: int;
+}
