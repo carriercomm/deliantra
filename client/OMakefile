@@ -1,17 +1,17 @@
 # Target
-Target		= dclient
+Name		= dclient
 
 # Sources
 Modules[] =
-	Client
+  Client
 
 # Library dependencies
-Requires[] =
-	deliantra
-	lwt.syntax
+OCaml-Requires[] =
+  deliantra
+  lwt.syntax
 
 # Camlp4
 Flags. +=
   $|client.ml|		= -syntax camlp4o
 
-ocaml-program ()
+program-install (.DEFAULT)

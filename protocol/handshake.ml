@@ -88,7 +88,7 @@ let handler create user hash_pw = CommandHandler.({ default with
       List.fold_left (fun id -> function
         | Capabilities.Tileset tilesets ->
             assert (List.length tilesets > 0);
-            ExtList.foldl_until (function
+            CoreList.foldl_until (function
               | { fs_flags; fs_id; fs_edgelen = 2 } when fs_flags land 2 != 0 -> fs_id
               | _ -> -1
             ) id tilesets

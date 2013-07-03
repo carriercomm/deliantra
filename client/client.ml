@@ -52,9 +52,9 @@ let game () =
   lwt recv, send = Network.connect "testserver.deliantra.net" 13327 in
 
   let cmdparser =
-    let (|+) = Parser.add_handler in
+    let (|+) = Protocol.add_handler in
 
-    Parser.make send
+    Protocol.make send
     |+ Ext.handler
     |+ Resources.handler
     |+ Handshake.handler create username password
@@ -68,7 +68,7 @@ let game () =
 
   Lwt.join [
     Handshake.initiate send;
-    recv (Parser.parse cmdparser) env;
+    recv (Protocol.parse cmdparser) env;
   ]
 
 
