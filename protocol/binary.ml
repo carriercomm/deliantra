@@ -1,4 +1,4 @@
-let (|>) = BatPervasives.(|>)
+open CorePervasives
 
 
 (* XXX: Server's FLOAT_MULTF *)

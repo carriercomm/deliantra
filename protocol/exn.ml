@@ -1,4 +1,4 @@
-let (|-) = BatPervasives.(|-)
+open CorePervasives
 
 
 type t =
