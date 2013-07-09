@@ -66,7 +66,7 @@ type send_t = {
 }
 
 
-let rec concat = function
+let concat = function
   | cmd, "" ->
       cmd
   | cmd, arg ->
