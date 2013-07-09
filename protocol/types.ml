@@ -3,13 +3,13 @@ include Message_t
 include Resources_t
 
 
-type glyph = {
+type grapheme = {
   foreground		: int;
   background		: int;
   text			: BatUTF8.t;
 }
 
-type tile = glyph list
+type tile = grapheme list
 
 
 type face_type =
@@ -22,7 +22,7 @@ type face_type =
 type fx = {
   fx_type		: face_type;
   fx_facenum		: int;
-  fx_glyph		: glyph list;
+  fx_grapheme		: grapheme list;
 }
 
 

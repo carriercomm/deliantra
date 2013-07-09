@@ -68,7 +68,7 @@ let attribute a =
   | _			-> failwith "invalid attribute"
 
 
-let glyph darkness g =
+let grapheme darkness g =
   let open Types in
   let { foreground; background; text } = g in
   let foreground, background =

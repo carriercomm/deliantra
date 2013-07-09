@@ -37,8 +37,8 @@ let parse_fx data =
           let faces =
             match fx_type with
             | Types.FT_IMAGE ->
-                let fx_glyph = Glyph.parse fx_name in
-                Types.({ fx_type; fx_facenum; fx_glyph; }) :: faces
+                let fx_grapheme = Grapheme.parse fx_name in
+                Types.({ fx_type; fx_facenum; fx_grapheme; }) :: faces
             | _ ->
                 faces
           in

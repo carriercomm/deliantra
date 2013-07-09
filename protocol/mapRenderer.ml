@@ -31,7 +31,7 @@ let draw_map win =
   flush stdout
 
 
-let glyph text =
+let grapheme text =
   let text = BatUTF8.adopt text in
   Types.([
     { foreground = 1; background = 13; text; };
@@ -39,9 +39,9 @@ let glyph text =
   ])
 
 
-let space   = glyph " "
-let player  = glyph "@"
-let no_face = glyph "\027[5;1;33m╳"
+let space   = grapheme " "
+let player  = grapheme "@"
+let no_face = grapheme "\027[5;1;33m╳"
 
 
 let select_face = function
@@ -84,7 +84,7 @@ let handler = CommandHandler.({
 
             let face = select_face cell.layers in
 
-            let glyph =
+            let grapheme =
               if x == playerx && y == playery then
                 player
               else if face != 0 then
@@ -93,7 +93,7 @@ let handler = CommandHandler.({
                 space
             in
 
-            win.(y * width + x) <- List.rev_map (Render.glyph cell.cell_darkness) glyph
+            win.(y * width + x) <- List.rev_map (Render.grapheme cell.cell_darkness) grapheme
         done
     done;
 

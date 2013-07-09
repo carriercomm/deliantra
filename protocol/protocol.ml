@@ -73,8 +73,8 @@ let protocol_parsers = let open CommandHandler in [
 
       let open Types in
       let env =
-        List.fold_left (fun env { fx_facenum; fx_glyph } ->
-          { env with tiles = IntMap.add fx_facenum fx_glyph env.tiles }
+        List.fold_left (fun env { fx_facenum; fx_grapheme } ->
+          { env with tiles = IntMap.add fx_facenum fx_grapheme env.tiles }
         ) env faces
       in
 

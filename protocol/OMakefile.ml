@@ -19,7 +19,7 @@ install Library ".DEFAULT" [
     "Game";
     "GameCell";
     "GameMap";
-    "Glyph";
+    "Grapheme";
     "Handshake";
     "Item";
     "MapRenderer";
