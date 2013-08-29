@@ -1,12 +1,13 @@
 open CorePervasives
+open CamomileLibraryDefault.Camomile
 
 
 let codepoint chars =
   let s =
     List.rev chars
     |> BatString.of_list
-    |> BatUTF8.adopt
   in
+  BatUTF8.validate s;
   assert (BatUTF8.length s = 1);
   BatUTF8.get s 0
 
@@ -14,7 +15,7 @@ let codepoint chars =
 (** Returns whether we can stop parsing UTF-8 characters. Once
     the first non-combining character was read, we stop. *)
 let is_combining_char cp =
-  match BatUChar.category cp with
+  match UCharInfo.general_category (UChar.chr (BatUChar.code cp)) with
   (* Combining characters (marks). *)
   | `Mc | `Me | `Mn -> true
   | _ -> false
@@ -78,10 +79,12 @@ let parse_grapheme_part data =
     ) ([], 0, []) data
   in
 
+  let ch = Array.of_list ch in
+
   Types.({
     foreground = fg;
     background = bg;
-    text = BatUTF8.of_enum (BatList.enum ch);
+    text = BatUTF8.init (Array.length ch) (Array.get ch);
   })
 
 

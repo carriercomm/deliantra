@@ -32,7 +32,7 @@ let draw_map win =
 
 
 let grapheme text =
-  let text = BatUTF8.adopt text in
+  BatUTF8.validate text;
   Types.([
     { foreground = 1; background = 13; text; };
     { foreground = 1; background = 13; text; };

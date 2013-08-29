@@ -34,4 +34,4 @@ let to_string = function
 
 
 let print =
-  to_string |- print_endline
+  to_string %> print_endline

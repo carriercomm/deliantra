@@ -43,6 +43,7 @@ install Library ".DEFAULT" [
     "atdgen";
     "baselib";
     "batteries";
+    "camomile";
     "json.syntax";
     "lwt.syntax";
     "lwt.unix";
