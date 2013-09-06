@@ -1,0 +1,3 @@
+@OCamlStdlibDir@/deliantra/*.a
+@OCamlStdlibDir@/deliantra/*.cm[ix]
+@OCamlStdlibDir@/deliantra/*.cmxa
