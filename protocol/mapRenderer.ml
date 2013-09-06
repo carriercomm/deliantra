@@ -1,3 +1,5 @@
+open CamomileLibraryDefault.Camomile
+
 let width  = 29
 let height = 27
 
@@ -32,7 +34,7 @@ let draw_map win =
 
 
 let grapheme text =
-  BatUTF8.validate text;
+  UTF8.validate text;
   Types.([
     { foreground = 1; background = 13; text; };
     { foreground = 1; background = 13; text; };

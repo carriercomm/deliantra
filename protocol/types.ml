@@ -1,3 +1,5 @@
+open CamomileLibraryDefault.Camomile
+
 include Ext_t
 include Message_t
 include Resources_t
@@ -6,7 +8,7 @@ include Resources_t
 type grapheme = {
   foreground		: int;
   background		: int;
-  text			: BatUTF8.t;
+  text			: UTF8.t;
 }
 
 type tile = grapheme list

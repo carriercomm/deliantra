@@ -7,15 +7,15 @@ let codepoint chars =
     List.rev chars
     |> BatString.of_list
   in
-  BatUTF8.validate s;
-  assert (BatUTF8.length s = 1);
-  BatUTF8.get s 0
+  UTF8.validate s;
+  assert (UTF8.length s = 1);
+  UTF8.get s 0
 
 
 (** Returns whether we can stop parsing UTF-8 characters. Once
     the first non-combining character was read, we stop. *)
 let is_combining_char cp =
-  match UCharInfo.general_category (UChar.chr (BatUChar.code cp)) with
+  match UCharInfo.general_category cp with
   (* Combining characters (marks). *)
   | `Mc | `Me | `Mn -> true
   | _ -> false
@@ -84,7 +84,7 @@ let parse_grapheme_part data =
   Types.({
     foreground = fg;
     background = bg;
-    text = BatUTF8.init (Array.length ch) (Array.get ch);
+    text = UTF8.init (Array.length ch) (Array.get ch);
   })
 
 
