@@ -2,24 +2,20 @@ language: c
 script: dpkg-buildpackage -b -us -uc
 
 install:
+   # Add PPA to download from.
    - sudo apt-add-repository -y ppa:pippijn/ppa
    - sudo apt-get update
-   - sudo apt-get install omake noweb valgrind dh-ocaml menhir camlp4-extra libatdgen-ocaml-dev libcurses-ocaml-dev libfacile-ocaml-dev libbatteries-ocaml-dev libsexplib-camlp4-dev libderiving-ocsigen-ocaml-dev libsha-ocaml-dev liblwt-ocaml-dev
-   - sudo sh -c 'cat debian/camlp4-meta.patch >> /usr/lib/ocaml/METAS/META.camlp4'
-   - cd ..
-   - hg clone https://bitbucket.org/camlspotter/pa_monad_custom
-   - cd pa_monad_custom
-   - make
-   - sudo make findlib-install
-   - cd ../deliantra
+   # GitHub dependencies.
+   - sudo apt-get install devscripts equivs
    - wget https://raw.github.com/pippijn/obuild/master/script/travis-depend?$(date +%s) -O travis-depend
    - chmod +x travis-depend
-   - ./travis-depend baselib
-   - ./travis-depend mlwidgets
-   - ./travis-depend codegen
-   - ./travis-depend re2ml
-   - ./travis-depend pa_json
-   - ./travis-depend pa_unpack
+   - ./travis-depend obuild baselib codegen
+   # Patch camlp4.
+   - sudo sh -c 'cat `obuild --where`/debian/camlp4-3.12.patch >> /usr/lib/ocaml/METAS/META.camlp4'
+   # More dependencies after the patch.
+   - ./travis-depend re2ml pa_json pa_unpack pa_monad_custom
+   # Package dependencies.
+   - sudo mk-build-deps -ir
 
 # whitelist
 branches:
