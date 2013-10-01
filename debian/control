@@ -14,6 +14,7 @@ Build-Depends:
  libbaselib-ocaml-dev,
  libjson-camlp4-dev,
  liblwt-ocaml-dev,
+ libncurses-ocaml-dev,
  libsexplib-camlp4-dev,
  libsha-ocaml-dev,
  libunpack-camlp4-dev
