@@ -12,9 +12,11 @@ Build-Depends:
  ocaml-findlib,
  libatdgen-ocaml-dev,
  libbaselib-ocaml-dev,
+ libjson-camlp4-dev,
  liblwt-ocaml-dev,
  libsexplib-camlp4-dev,
- libsha-ocaml-dev
+ libsha-ocaml-dev,
+ libunpack-camlp4-dev
 Standards-Version: 3.9.2
 Homepage: https://github.com/pippijn/deliantra
 Vcs-Git: git://github.com/pippijn/deliantra
