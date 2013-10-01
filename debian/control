@@ -1,42 +1,49 @@
 Source: ocaml-deliantra
-Section: ocaml
+Section: games
 Priority: optional
 Maintainer: Pippijn van Steenhoven <pip88nl@gmail.com>
 Uploaders: 
-  Pippijn van Steenhoven <pip88nl@gmail.com>
+ Pippijn van Steenhoven <pip88nl@gmail.com>
 Build-Depends:
-  obuild,
-  ocaml-nox (>= 3.12),
-  ocaml-findlib,
-  libatdgen-ocaml-dev,
-  libbaselib-ocaml-dev,
-  liblwt-ocaml-dev,
-  libsexplib-camlp4-dev,
-  libsha-ocaml-dev,
-  dh-ocaml,
-  debhelper (>= 8.0.0)
+ debhelper (>= 8.0.0),
+ obuild, noweb,
+ dh-ocaml (>= 0.9),
+ ocaml-nox (>= 3.12),
+ ocaml-findlib,
+ libatdgen-ocaml-dev,
+ libbaselib-ocaml-dev,
+ liblwt-ocaml-dev,
+ libsexplib-camlp4-dev,
+ libsha-ocaml-dev
 Standards-Version: 3.9.2
 Homepage: https://github.com/pippijn/deliantra
 Vcs-Git: git://github.com/pippijn/deliantra
 Vcs-Browser: https://github.com/pippijn/deliantra
 
-Package: deliantra
+Package: deliantra-cli
 Architecture: any
 Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
 Provides: ${ocaml:Provides}
-Description: Fast lexer generator compatible with ocamllex
- Stuff.
+Description: Console Deliantra client
+ A rogue-like networked multiplayer game.
+ .
+ This package contains the client program.
 
 Package: libdeliantra-ocaml
 Architecture: any
 Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
 Provides: ${ocaml:Provides}
 Description: Fast lexer generator compatible with ocamllex
- Stuff.
+ A rogue-like networked multiplayer game.
+ .
+ This package contains the client library.
 
 Package: libdeliantra-ocaml-dev
 Architecture: any
 Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
 Provides: ${ocaml:Provides}
 Description: Fast lexer generator compatible with ocamllex
- Stuff.
+ A rogue-like networked multiplayer game.
+ .
+ This package contains development files for the client library.
+ Use this to create your own Deliantra client extensions.
