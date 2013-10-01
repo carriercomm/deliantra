@@ -23,12 +23,11 @@ let read_u24 stream =
   (hi lsl 16) lor lo
 
 
-(* XXX: actually this reads int, which may be 31 or 63 bits. *)
 let read_u32 stream =
   let hi = read_u16 stream in
   let lo = read_u16 stream in
 
-  (hi lsl 16) lor lo
+  Int32.(shift_left (of_int hi) 16 |> logor (of_int lo))
 
 
 let read_s08 stream =
@@ -58,8 +57,8 @@ let read_s16 stream =
 let read_s32 stream =
   let result =
     match read_u32 stream with
-    | u32 when u32 > 0x7fffffff ->
-        (lnot u32) land 0xffffffff - 1
+    | u32 when u32 > 0x7fffffffl ->
+        Int32.((lognot u32) |> logand 0xffffffffl |> pred)
     | u32 ->
         u32
   in
@@ -67,11 +66,15 @@ let read_s32 stream =
   result
 
 
+let read_u31 stream =
+  Int32.to_int (read_u32 stream)
+
+
 let read_u64 stream =
   let hi = read_u32 stream in
   let lo = read_u32 stream in
 
-  Int64.(shift_left (of_int hi) 32 |> logor (of_int lo))
+  Int64.(shift_left (of_int32 hi) 32 |> logor (of_int32 lo))
 
 
 let read_string read_length stream =
@@ -94,11 +97,11 @@ let read_ber stream =
 let read_string_ber = read_string read_ber
 let read_string08 = read_string read_u08
 let read_string16 = read_string read_u16
-let read_string32 = read_string read_u32
+let read_string32 = read_string read_u31
 
 
 let read_float stream =
-  1.0 /. float_multf *. float_of_int (read_u32 stream)
+  1.0 /. float_multf *. Int32.to_float (read_u32 stream)
 
 
 let range_check name min max value =
@@ -116,10 +119,9 @@ let read_u16 stream =
   range_check "u16" 0 0x7fff (read_u16 stream)
 
 let read_u32 stream =
-  range_check "u32" 0 0x7fffffff (read_u32 stream)
+  range_check "u32" 0 0x7fffffff (read_u31 stream)
 
-let max = Int64.of_string "0x7fffffffffffffff"
 let read_u64 stream =
   let result = read_u64 stream in
-  assert (result < max);
+  assert (result <= 0x7fffffffffffffffL);
   result
