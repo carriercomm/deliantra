@@ -2,8 +2,6 @@ Source: ocaml-deliantra
 Section: games
 Priority: optional
 Maintainer: Pippijn van Steenhoven <pip88nl@gmail.com>
-Uploaders: 
- Pippijn van Steenhoven <pip88nl@gmail.com>
 Build-Depends:
  debhelper (>= 8.0.0),
  obuild, noweb,
@@ -36,7 +34,7 @@ Package: libdeliantra-ocaml
 Architecture: any
 Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
 Provides: ${ocaml:Provides}
-Description: Fast lexer generator compatible with ocamllex
+Description: Console Deliantra client
  A rogue-like networked multiplayer game.
  .
  This package contains the client library.
@@ -45,7 +43,7 @@ Package: libdeliantra-ocaml-dev
 Architecture: any
 Depends: ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
 Provides: ${ocaml:Provides}
-Description: Fast lexer generator compatible with ocamllex
+Description: Console Deliantra client
  A rogue-like networked multiplayer game.
  .
  This package contains development files for the client library.
