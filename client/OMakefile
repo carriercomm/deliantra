@@ -1,0 +1,14 @@
+Name		= dclient
+
+OCaml-Sources[] =
+  Client
+
+OCaml-Requires[] =
+  deliantra
+  lwt.syntax
+
+Flags. +=
+  $|client.ml|	= -syntax camlp4o
+
+TARGET = $(program-install)
+#.DEFAULT: $(TARGET)
